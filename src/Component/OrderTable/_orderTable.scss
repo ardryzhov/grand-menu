@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital@0;1&display=swap');
+
+.order-wrapper {
+	box-sizing: border-box;
+	width: 500px;
+	height: 600px;
+	background: linear-gradient(to bottom, rgba(189, 195, 199, .5) 0%, rgba(44, 62, 80, .5) 100%);
+	backdrop-filter: blur(5px);
+	border-radius: 5px;
+	border: 1px solid #000;
+	box-sizing: border-box;
+}
+
+.order-table-title {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 10%;
+	h2 {
+		color: #fff;
+		text-shadow: 1px 1px #000;
+		width: 100%;
+		text-align: center;
+		font-size: 30px;
+	}
+	.reset-order-table {
+		display: flex;
+		font-size: 18px;
+		margin-right: 10px;
+		justify-content: center;
+		align-items: center;
+		color: rgb(255, 0, 0);
+		width: 20px;
+		height: 20px;
+		cursor: pointer;
+	}
+}
+
+/* ORDER_TABLE_PRODUCT */
+
+.order-table-product {
+	height: 65%;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.item-price-change span {
+	color: #fff;
+}
+
+.order-table-product-preview {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 26px;
+	font-weight: 600;
+	font-family: 'Poppins', sans-serif;
+	font-style: italic;
+}
+
+
+/* ORDER ITEM WRAP */
+
+.order-table-item-wrapper {
+	display: flex;
+	margin-left: 10px;
+	max-height: 100px;
+	justify-content: space-between;
+	font-family: 'Montserrat', sans-serif;
+	overflow-x: hidden;
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;
+	.order-item-left-side {
+		display: flex;
+		justify-content: space-between;
+		width: 80%;
+		.order-table-item-info {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-evenly;
+			align-items: center;
+			width: 70%;	
+			.order-item-title {
+				width: 100%;
+				span {
+					font-weight: 600;
+					font-size: 18px;
+				}
+			}
+			.order-item-price {
+				display: inline-block;
+				position: relative;
+				span {
+					font-size: 16px;
+					font-style: italic;
+				}
+			}
+		}
+	}
+}
+
+
+
+.order-table-item-count {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 25%;
+	.order-count {
+		margin: 0 5px;
+		font-weight: 600;
+		font-size: 20px;
+	}
+	.far {
+		cursor: pointer;
+		font-size: 20px;
+		transition: .3s ease;
+	}
+	.btn-change-count:hover {
+		color: #fff;
+		transform: scale(1.1);
+	}
+}
+
+
+.order-table-item-delete {
+	width: 20%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	.btn-delete-item {
+		font-size: 36px;
+		cursor: pointer;
+		transition: .8s ease;
+		transform: translateX(100px);
+	}
+}
+
+.order-table-item-wrapper:hover .btn-delete-item {
+	transition: .8s;
+	transform: translateX(0px);
+}
+
+/* ORDER_TABLE_INFO */
+
+.order-table-info {
+	height: 25%;
+	border-top: 1px solid #ccc;
+}
+
+.counter-table-item {
+	text-align: center;
+}
+
+
+/* CSS TRANSITION ITEM WRAPPER */
+
+.order__item-enter {
+	max-height: 0;
+	transition: .5s ease;
+	transform: translateX(-150%);
+}
+.order__item-enter-active {
+	max-height: 90px;
+	transition: .5s ease;
+	transform: translateX(0);
+}
+
+.order__item-exit {
+	max-height: 90px;
+	transition: .5s ease;
+	transform: translateX(0);
+}
+.order__item-exit-active {
+	max-height: 0;
+	transition: .5s ease;
+	transform: translateX(150%);
+}
+
+/* CSS TRANSITION COUNT */
+
+.count-main {
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+	width: 80px;
+}
+.item-count-transition-enter {
+	display: inline-block;
+	transition: .5s;
+	transform: translateY(100%);
+}
+
+.count-transition {
+	padding: 0px 5px;
+}
+.item-count-transition-enter.item-count-transition-enter-active {
+	transform: translateY(0);
+}
+
+.item-count-transition-exit {
+	display: inline-block;
+	transition: .5s;
+	transform: translateY(0);
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+.item-count-transition-exit.item-count-transition-exit-active {
+	transform:translateY(-100%);
+}
+
+/* CSS TRANSITION PRICE */
+
+.order-item-price {
+	width: 60px;
+	display: inline-block;
+	overflow: hidden;
+	position: relative;
+}
+
+.item-price-change-enter {
+	display: inline-block;
+	transition: .5s;
+	transform: translateY(100%);
+}
+.item-price-change-enter.item-price-change-enter-active {
+	transform: translateY(0);
+}
+
+.item-price-change-exit {
+	display: inline-block;
+	transition: .5s;
+	transform: translateY(0);
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+.item-price-change-exit.item-price-change-exit-active {
+	transform: translateY(-100%);
+}

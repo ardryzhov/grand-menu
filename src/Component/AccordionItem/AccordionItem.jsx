@@ -4,7 +4,7 @@ import './_accordionItem.scss';
 
 import products from '../../assets/data/data';
 
-const AccordionItem = ({obj, addToOrder, ticker}) => {
+const AccordionItem = ({obj, addToOrder}) => {
 	const itemRef = useRef();
 
 	const mouseEnter = (e) => {

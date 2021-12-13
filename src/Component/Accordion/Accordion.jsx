@@ -40,7 +40,6 @@ const Accordion = ({accordionTickers, order, setOrder, addToOrder}) => {
 					? 'item-content show' 
 					: 'item-content'}>
 						<AccordionItem 
-						ticker={value.ticker}
 						obj={obj}
 						order={order}
 						setOrder={setOrder}

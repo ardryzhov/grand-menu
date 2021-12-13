@@ -75,9 +75,36 @@
 				font-size: 1.2rem;
 				font-style: italic;
 			}
+			.accordion-btn {
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+				transition: .3s ease;
+				cursor: pointer;
+				font-size: 18px;
+				width: 130px;
+				height: 40px;
+				background-color: transparent;
+				border: 2px solid #ccc;
+				color: #ccc;
+				border-radius: 10px;
+				text-shadow: 1px 1px #000;
+				span {
+					display: inline-block;
+				}
+				
+			}
+			.accordion-btn:hover {
+				transition: .3s ease;
+				border: 2px solid #fff;
+				color: #fff;
+				transform: scale(1.1);
+			}
 		}
 	}
 }
+
+
 
 @media screen and (max-width: 770px) {
 	.accordion-item-wrapper {

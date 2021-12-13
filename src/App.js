@@ -45,7 +45,12 @@ function App() {
 				</div>
 
 				<div className="order-table">
-					<OrderTable />
+					<OrderTable
+					order={order}
+					setOrder={setOrder}
+					addToOrder={addToOrder}
+					removeToOrder={removeToOrder}
+					deleteProduct={deleteProduct}/>
 				</div>
 
 			</main>
