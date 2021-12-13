@@ -25,7 +25,7 @@ const Accordion = ({accordionTickers, order, setOrder, addToOrder}) => {
 				obj.push(item);
 			}
 	})
-	
+
 	return (
 				<div className="accord-item" key={idx}>
 					<div className="item-title" onClick={() => toggle(idx)}>
@@ -40,6 +40,7 @@ const Accordion = ({accordionTickers, order, setOrder, addToOrder}) => {
 					? 'item-content show' 
 					: 'item-content'}>
 						<AccordionItem 
+						ticker={value.ticker}
 						obj={obj}
 						order={order}
 						setOrder={setOrder}
