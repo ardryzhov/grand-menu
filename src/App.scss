@@ -2,7 +2,6 @@
 	width: 90%;
 	margin: 20px auto;
 	height: 100%;
-	border: 1px solid #000;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -23,7 +22,11 @@
 	border: 1px solid #8a8080;
 }
 
-
+@media screen and (max-width: 1025px) {
+	#main {
+		justify-content: center;
+	}
+}
 
 @media screen and (max-width: 770px) {
 	#main {
