@@ -1,0 +1,145 @@
+.modal-wrapper {
+	height: 100vh;
+	width: 100vw;
+	background-color: rgba(0, 0, 0, .4);
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	transition: .3s ease;
+	pointer-events: none;
+	&.active-modal {
+		transition: .3s ease;
+		pointer-events: auto;
+		opacity: 1;
+	}
+
+}
+
+.modal__content {
+	position: absolute;
+	top: 10%;
+	padding: 20px;
+	color: #fff;
+	border-radius: 20px;
+	width: 400px;
+	transition: .3s ease;
+	transform: translateY(-150%);
+	&.active-modal-content {
+		background-color: rgba(28, 28, 28, .8);
+		backdrop-filter: blur(5px);
+		transition: .3s ease;
+		transform: translateY(0);
+	}
+	.modal__content-title {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		color: #fff;
+		margin: 5px 0px;
+		.title-modal-close {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 30px;
+			height: 30px;
+			i {
+				color: #fff;
+				font-size: 26px;
+				cursor: pointer;
+			}
+		}
+	}
+	.modal__content-info {
+		display: flex;
+		justify-content: center;
+		margin: 10px 0px;
+		.info__inputs {
+			width: 90%;
+			display: flex;
+			flex-direction: column;
+			.input-modal {
+				display: flex;
+				justify-content: center;
+				margin: 5px 0px;
+				label {
+					width: 25%;
+				}
+				input {
+					width: 60%;
+					border-radius: 5px;
+					outline: none;
+					border: none;
+				}
+			}
+			.comment-modal {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				.com {
+					width: 86%;
+					margin-bottom: 5px;
+				}
+			}
+			textarea {
+				width: 86%;
+				height: 75px;
+				border-radius: 5px;
+				border: none;
+				outline: none;
+			}
+		}
+	}
+}
+
+.modal__btn {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	.btn-modal {
+		cursor: pointer;
+		width: 150px;
+		height: 40px;
+		font-size: 18px;
+		background-color: transparent;
+		border: 2px solid #ccc;
+		color: #ccc;
+		border-radius: 10px;
+		text-shadow: 1px 1px #000;
+		line-height: 20px;
+	}
+}
+
+@media screen and (max-width: 430px) {
+	.modal__content {
+		width: 350px;
+	}
+}
+
+@media screen and (max-width: 380px) {
+	.modal__content {
+		width: 320px;
+	}
+}
+
+@media screen and (max-width: 325px) {
+	.modal__content {
+		width: 280px;
+		padding: 10px;
+		.modal__content-info {
+			.info__inputs {
+				width: 100%;
+				.input-modal {
+					input {
+						
+					}
+				}
+			}
+
+		}
+	}
+}

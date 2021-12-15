@@ -4,8 +4,9 @@ import './_orderTable.scss';
 
 import products from '../../assets/data/data';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import Shipping from '../Shipping';
 
-const OrderTable = ({order, setOrder, addToOrder, removeToOrder, deleteProduct}) => {
+const OrderTable = ({order, setOrder, addToOrder, removeToOrder, deleteProduct, openModal, closeModal}) => {
 
 	const prd = useRef();
 	const orderIds = Object.keys(order);
@@ -84,6 +85,20 @@ const OrderTable = ({order, setOrder, addToOrder, removeToOrder, deleteProduct})
 				<TransitionGroup component='div' className='render-order'>
 					{orderIds.map((val, i) => renderOrder(val, i))}
 				</TransitionGroup>
+			</div>
+
+			<div className="order-table-info">
+					<div className="order-table-bottom">
+						<div className="order-table-total-price">
+							{total <= 0 
+							?  <div className='order-table-product-preview'>Здесь будет отображёна информация о заказе. </div>
+							: (
+								<div className="order-table-total-price">
+									<Shipping total={total} openModal={openModal}/>
+								</div>
+							)}
+						</div>
+					</div>
 			</div>
 		</div>
 	)
