@@ -45,3 +45,11 @@
 	}
 }
 
+@media screen and (min-width: 2500px) {
+	.accrodion-wrapper {
+		width: 100%;
+		.accordion-item-wrapper {
+			width: 100%;
+		}
+	}
+}

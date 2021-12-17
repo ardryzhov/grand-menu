@@ -22,6 +22,12 @@
 	border: 1px solid #8a8080;
 }
 
+@media screen and (min-width: 2500px) {
+	.accord {
+		width: 1600px;
+	}
+}
+
 @media screen and (max-width: 1025px) {
 	#main {
 		justify-content: center;

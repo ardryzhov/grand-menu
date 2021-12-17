@@ -40,6 +40,9 @@
 		align-items: center;
 		color: #fff;
 		margin: 5px 0px;
+		h2 {
+			margin: 0;
+		}
 		.title-modal-close {
 			display: flex;
 			justify-content: center;
@@ -73,6 +76,14 @@
 					border-radius: 5px;
 					outline: none;
 					border: none;
+				}
+				.valid-input {
+					border-bottom: 3px solid rgb(7, 190, 7);
+					border-radius: 5px;
+				}
+				.invalid-input {
+					border-bottom: 3px solid rgb(190, 7, 7);
+					border-radius: 5px;
 				}
 			}
 			.comment-modal {

@@ -154,10 +154,14 @@
 
 .counter-table-item {
 	text-align: center;
+	max-width: 50%;
+	margin: 0 auto;
 }
 
 
 /* CSS TRANSITION ITEM WRAPPER */
+
+
 
 .order__item-enter {
 	max-height: 0;
@@ -183,11 +187,22 @@
 
 /* CSS TRANSITION COUNT */
 
+.item-transition {
+	max-width: 60%;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+	text-align: center;
+}
+
 .count-main {
 	display: inline-block;
 	position: relative;
 	overflow: hidden;
-	width: 80px;
+	width: 50px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
 }
 .item-count-transition-enter {
 	display: inline-block;
@@ -283,13 +298,44 @@
 		width: 35%;
 		justify-content: space-between;
 		.order-count {
-			width: 50px;
+			width: 40px;
 			margin: 0 3px;
 			font-weight: 600;
 			font-size: 16px;
 			.count-main {
-				width: 50px;
+				width: 40px;
 				text-align: center;
+				display: flex;
+				flex-direction: column;
+				.item-transition {
+					max-width: 60%;
+					margin: 0 auto;
+					position: relative;
+					overflow: hidden;
+					text-align: center;
+				}
+				// //
+				.item-count-transition {
+					overflow-y: hidden;
+					text-align: center;
+					position: relative;
+					left: 0;
+					z-index: -1;
+					.item-count-transition-enter {
+						transform: translateY(100%);
+					}
+					.item-count-transition-enter.item-count-transition-enter-active {
+						transform: translateY(0%);
+					}
+
+					.item-count-transition-exit {
+						left: 0px;
+						transform: translateY(-100%);
+					}
+					.item-count-transition-exit.item-count-transition-exit-active {
+						transform: translateY(-100%);
+					}
+				}
 			}
 		}
 		.far {
@@ -298,6 +344,16 @@
 			transition: .3s ease;
 			margin: 0px 5px;
 		}
+	}
+	.order-table-item-wrapper  {
+		margin: 0;
+		.order-item-left-side {
+			justify-content: start;
+		}
+	}
+	.order-table-item-wrapper:hover .btn-delete-item {
+		transition: .8s;
+		transform: translateX(-25px);
 	}
 }
 
@@ -321,6 +377,6 @@
 	}
 	.order-table-item-wrapper:hover .btn-delete-item {
 		transition: .8s;
-		transform: translateX(10px);
+		transform: translateX(-10px);
 	}
 }

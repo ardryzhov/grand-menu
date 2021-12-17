@@ -49,6 +49,7 @@ const OrderTable = ({order, setOrder, addToOrder, removeToOrder, deleteProduct, 
 						<i className="far fa-plus-square btn-change-count" onClick={() => addToOrder(val)}></i>
 						<div className="order-count">
 							<span className="count-main">
+								<div className="item-transition">
 								<TransitionGroup
 								component='span'
 								className='item-count-transition'>
@@ -59,9 +60,11 @@ const OrderTable = ({order, setOrder, addToOrder, removeToOrder, deleteProduct, 
 										<span className='count-transition'>{count}</span>
 									</CSSTransition>
 								</TransitionGroup>
+								</div>
 								<span className='counter-table-item'> шт.</span>
 							</span>
 						</div>
+						
 						<i className="far fa-minus-square btn-change-count" onClick={() => removeToOrder(val)}></i>
 					</div>
 				</div>

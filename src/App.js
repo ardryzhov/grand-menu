@@ -51,7 +51,6 @@ function App() {
 		if (modal) {
 			setModal(false);
 			setTimeout(() => setOrderCreate(false), 500)
-			
 		};
 	}
 
@@ -70,8 +69,55 @@ function App() {
 			Адрес: ${buyerInfo.address}
 			`);
 			console.log(`Комментарий к заказу: ${orderComment.comment}`);
+			resetForm();
+			console.log(modal)
 		} 
+	}
 
+	const resetForm = () => {
+		if (modal) {
+			setTimeout(() => {
+				setBuyerInfo({
+					firstName: '',
+					secondName: '',
+					phone: '',
+					address: '',
+				})
+			}, 500)
+		}
+	}
+
+	const validatePhone = (phone) => {
+		const regex = /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
+		return regex.test(phone);
+	}
+	
+	const validateWord = (word) => {
+		const regex = /^([а-яё]+)$/i;
+		return regex.test(word);
+	}
+
+	const allFormValidation = (val) => {
+		if (val.type === 'text' && validateWord(val.value)) {
+			return true
+		} else if (val.type === 'tel' && validatePhone(val.value)) {
+			return true;
+		} else {
+			return false
+		}
+	}
+
+	const changeBuyerInfo = (e) => {
+		const event = e.target;
+		const eventName = event.name;
+		if (allFormValidation(event)) {
+			event.classList.remove('invalid-input')
+			event.classList.add('valid-input')
+			setBuyerInfo({...buyerInfo, [`${eventName}`]: event.value})
+		} else {
+			event.classList.remove('valid-input')
+			event.classList.add('invalid-input')
+		}
 	}
 
 	useEffect(() => {
@@ -145,10 +191,10 @@ function App() {
 
 				<div className="modal__content-info">
 					<div className="info__inputs">
-						<div className="input-modal"><label htmlFor="firstName">Имя: </label><input type="text" id='firstName' name='firstName' onChange={(e) => setBuyerInfo({...buyerInfo, firstName: e.target.value})} required/></div>
-						<div className="input-modal"><label htmlFor="secondName">Фамилия: </label><input type="text" id='secondName' name='secondName' onChange={(e) => setBuyerInfo({...buyerInfo, secondName: e.target.value})} required/></div>
-						<div className="input-modal"><label htmlFor="phone">Телефон: </label><input type="tel" id='phone' name='phone' onChange={(e) => setBuyerInfo({...buyerInfo, phone: e.target.value})} required/></div>
-						<div className="input-modal"><label htmlFor="address">Адрес: </label><input type="text" id='address' name='address' onChange={(e) => setBuyerInfo({...buyerInfo, address: e.target.value})} required/></div>
+						<div className="input-modal"><label htmlFor="firstName">Имя: </label><input type="text" id='firstName' name='firstName' onChange={(e) => changeBuyerInfo(e)} required/></div>
+						<div className="input-modal"><label htmlFor="secondName">Фамилия: </label><input type="text" id='secondName' name='secondName' onChange={(e) => changeBuyerInfo(e)} required/></div>
+						<div className="input-modal"><label htmlFor="phone">Телефон: </label><input type="tel" id='phone' name='phone' onChange={(e) => changeBuyerInfo(e)} required/></div>
+						<div className="input-modal"><label htmlFor="address">Адрес: </label><input type="text" id='address' name='address' onChange={(e) => changeBuyerInfo(e)} required/></div>
 						<div className="comment-modal"><div className="com"><label htmlFor="comment">Комментарий к заказу: </label></div><textarea name="comment" id="comment" onChange={(e) => setOrderComment({comment: e.target.value})}></textarea></div>
 					</div>
 				</div>
