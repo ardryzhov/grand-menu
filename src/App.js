@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './App.scss';
 import Header from './Component/Header';
 import Accordion from './Component/Accordion';
@@ -6,6 +6,7 @@ import OrderTable from './Component/OrderTable';
 import Modal from './Component/Modal';
 
 function App() {
+	const	formRef = useRef();
 	const [accordionTickers] = useState([
 		{ticker: 'Акция'},
 		{ticker: 'Еда'},
@@ -14,6 +15,7 @@ function App() {
 	]);
 	const [order, setOrder] = useState({});
 	const [modal, setModal] = useState(false);
+	const [resetForm, setResetForm] = useState(false);
 	const [buyerInfo, setBuyerInfo] = useState({
 		firstName: '',
 		secondName: '',
@@ -44,7 +46,17 @@ function App() {
 	}
 
 	const openModal = () => {
-		if (!modal) setModal(true);
+		if (!modal) {
+			setModal(true);
+			let formArr = Array.from(formRef.current.children);
+			formArr.forEach(el => {
+				const element = el.lastElementChild;
+				element.value = '';
+				element.classList.remove('invalid-input');
+				element.classList.remove('valid-input');
+			});
+			resetBuyerForm();
+		}
 	}
 
 	const closeModal = () => {
@@ -69,22 +81,16 @@ function App() {
 			Адрес: ${buyerInfo.address}
 			`);
 			console.log(`Комментарий к заказу: ${orderComment.comment}`);
-			resetForm();
-			console.log(modal)
 		} 
 	}
 
-	const resetForm = () => {
-		if (modal) {
-			setTimeout(() => {
-				setBuyerInfo({
-					firstName: '',
-					secondName: '',
-					phone: '',
-					address: '',
-				})
-			}, 500)
-		}
+	const resetBuyerForm = () => {
+		setBuyerInfo({
+			firstName: '',
+			secondName: '',
+			phone: '',
+			address: '',
+		})
 	}
 
 	const validatePhone = (phone) => {
@@ -190,13 +196,13 @@ function App() {
 				</div>
 
 				<div className="modal__content-info">
-					<div className="info__inputs">
+					<form className="info__inputs" ref={formRef}>
 						<div className="input-modal"><label htmlFor="firstName">Имя: </label><input type="text" id='firstName' name='firstName' onChange={(e) => changeBuyerInfo(e)} required/></div>
 						<div className="input-modal"><label htmlFor="secondName">Фамилия: </label><input type="text" id='secondName' name='secondName' onChange={(e) => changeBuyerInfo(e)} required/></div>
 						<div className="input-modal"><label htmlFor="phone">Телефон: </label><input type="tel" id='phone' name='phone' onChange={(e) => changeBuyerInfo(e)} required/></div>
 						<div className="input-modal"><label htmlFor="address">Адрес: </label><input type="text" id='address' name='address' onChange={(e) => changeBuyerInfo(e)} required/></div>
 						<div className="comment-modal"><div className="com"><label htmlFor="comment">Комментарий к заказу: </label></div><textarea name="comment" id="comment" onChange={(e) => setOrderComment({comment: e.target.value})}></textarea></div>
-					</div>
+					</form>
 				</div>
 
 				<div className="modal__btn">
