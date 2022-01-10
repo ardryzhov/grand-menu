@@ -15,7 +15,6 @@ function App() {
 	]);
 	const [order, setOrder] = useState({});
 	const [modal, setModal] = useState(false);
-	const [resetForm, setResetForm] = useState(false);
 	const [buyerInfo, setBuyerInfo] = useState({
 		firstName: '',
 		secondName: '',
@@ -94,7 +93,7 @@ function App() {
 	}
 
 	const validatePhone = (phone) => {
-		const regex = /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
+		const regex = /^(\+7|7|8)?[\s]?\(?[489][0-9]{2}\)?[\s]?[0-9]{3}[\s]?[0-9]{2}[\s]?[0-9]{2}$/;
 		return regex.test(phone);
 	}
 	

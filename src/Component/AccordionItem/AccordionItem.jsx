@@ -28,10 +28,12 @@ const AccordionItem = ({obj, addToOrder}) => {
 	const accordionItem = obj.map((value, idx) => {
 		let itemToOrder = null;
 		
-		const x = Object.keys(products).map(val => {
+		Object.keys(products).map(val => {
 			if (products[val].title === value.title) {
 				itemToOrder = val;
-			} 
+			}
+
+			return val;
 		});
 
 		return (

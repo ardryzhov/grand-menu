@@ -20,11 +20,12 @@ const Accordion = ({accordionTickers, order, setOrder, addToOrder}) => {
 	const accordionItem = accordionTickers.map((value, idx) => {
 		const obj = [];
 
-		const arr = product.map(item => {
+		product.map(item => {
 			if (item.ticker === value.ticker) {
 				obj.push(item);
 			}
-	})
+			return item;
+		})
 
 	return (
 				<div className="accord-item" key={idx}>
